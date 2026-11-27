@@ -180,7 +180,7 @@ dependencies = [
 
 [[package]]
 name = "dprint-plugin-tidy"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "dprint-core",
  "dprint-development",
