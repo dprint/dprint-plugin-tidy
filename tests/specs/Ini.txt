@@ -1,0 +1,10 @@
+-- file.ini --
+== should format ini ==
+[section]
+key=value
+other  =  thing
+
+[expect]
+[section]
+key = value
+other = thing

@@ -1,0 +1,13 @@
+-- file.ts --
+~~ {"js.sortImports": true} ~~
+== should sort imports ==
+import { b } from './b';
+import { a } from 'a';
+import fs from 'node:fs';
+
+[expect]
+import fs from "node:fs";
+
+import { a } from "a";
+
+import { b } from "./b";

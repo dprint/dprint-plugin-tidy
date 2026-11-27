@@ -1,0 +1,12 @@
+-- file.less --
+== should format less ==
+@color:red;
+.a{.b{color:@color}}
+
+[expect]
+@color: red;
+.a {
+  .b {
+    color: @color;
+  }
+}

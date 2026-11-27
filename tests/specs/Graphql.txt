@@ -1,0 +1,13 @@
+-- file.graphql --
+== should format graphql ==
+query Q($id:ID!){user(id:$id){name,friends{name}}}
+
+[expect]
+query Q($id: ID!) {
+  user(id: $id) {
+    name
+    friends {
+      name
+    }
+  }
+}

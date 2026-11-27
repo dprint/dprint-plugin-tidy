@@ -1,0 +1,7 @@
+-- file.ts --
+~~ {"quote": "single", "js.quote": "double"} ~~
+== should use the section's value of a shared option over the top level one ==
+const a = 'b';
+
+[expect]
+const a = "b";

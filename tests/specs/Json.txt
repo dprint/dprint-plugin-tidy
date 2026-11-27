@@ -1,0 +1,6 @@
+-- file.json --
+== should format json ==
+{"a":1,"b":[1,2,3],"c":{"d":null}}
+
+[expect]
+{ "a": 1, "b": [1, 2, 3], "c": { "d": null } }

@@ -1,0 +1,34 @@
+{
+  "name": "@dprint/tidy",
+  "version": "0.0.0",
+  "description": "Wasm buffer for dprint-plugin-tidy.",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dprint/dprint-plugin-tidy.git"
+  },
+  "keywords": [
+    "tidy",
+    "prettier",
+    "html",
+    "vue",
+    "css",
+    "markdown",
+    "code",
+    "formatter",
+    "dprint"
+  ],
+  "author": "David Sherret",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dprint/dprint-plugin-tidy/issues"
+  },
+  "homepage": "https://github.com/dprint/dprint-plugin-tidy#readme",
+  "scripts": {
+    "test": "node index.test.js"
+  },
+  "devDependencies": {
+    "@dprint/formatter": "~0.4.0"
+  }
+}

@@ -1,0 +1,10 @@
+-- file.ts --
+~~ {"width": 40} ~~
+== should wrap at the width ==
+const value = callSomething(firstArgument, secondArgument);
+
+[expect]
+const value = callSomething(
+  firstArgument,
+  secondArgument,
+);

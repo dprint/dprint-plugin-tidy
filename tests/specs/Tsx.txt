@@ -1,0 +1,12 @@
+-- file.tsx --
+== should format tsx ==
+const App=()=><div className='a'>{items.map(i=><Item key={i} />)}</div>
+
+[expect]
+const App = () => (
+  <div className="a">
+    {items.map((i) => (
+      <Item key={i} />
+    ))}
+  </div>
+);

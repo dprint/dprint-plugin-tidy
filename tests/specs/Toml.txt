@@ -1,0 +1,12 @@
+-- file.toml --
+== should format toml ==
+[package]
+name="tidy"
+version   =   "1.0.0"
+keywords=["a","b"]
+
+[expect]
+[package]
+name = "tidy"
+version = "1.0.0"
+keywords = ["a", "b"]

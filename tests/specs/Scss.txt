@@ -1,0 +1,15 @@
+-- file.scss --
+== should format scss ==
+$color:red;
+.a{.b{color:$color}&:hover{color:blue}}
+
+[expect]
+$color: red;
+.a {
+  .b {
+    color: $color;
+  }
+  &:hover {
+    color: blue;
+  }
+}

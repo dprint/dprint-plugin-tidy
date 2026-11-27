@@ -1,0 +1,7 @@
+-- file.ts --
+~~ {"js.semi": false, "js.arrowParens": "avoid"} ~~
+== should apply the options of a section written with dots ==
+const f = (a) => a;
+
+[expect]
+const f = a => a

@@ -1,0 +1,1015 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://plugins.dprint.dev/dprint/dprint-plugin-tidy/0.0.0/schema.json",
+  "type": "object",
+  "x-sections": [
+    {
+      "title": "Every language",
+      "description": "These apply to every language. Set one for a single section with its name first (ex. `\"markdown.width\": 100`).",
+      "properties": [
+        "width",
+        "indent",
+        "tabs",
+        "eol",
+        "whitespace",
+        "quote",
+        "trailingComma",
+        "bracketSpacing",
+        "bracketSameLine",
+        "singleAttributePerLine",
+        "ignore",
+        "embedded"
+      ]
+    },
+    {
+      "title": "HTML",
+      "properties": [
+        "html.enabled"
+      ]
+    },
+    {
+      "title": "Vue",
+      "properties": [
+        "vue.enabled",
+        "vue.indentBlocks"
+      ]
+    },
+    {
+      "title": "Handlebars",
+      "properties": [
+        "handlebars.enabled",
+        "handlebars.dialect"
+      ]
+    },
+    {
+      "title": "CSS, SCSS and Less",
+      "properties": [
+        "css.enabled"
+      ]
+    },
+    {
+      "title": "JSON",
+      "properties": [
+        "json.enabled",
+        "json.quoteProps",
+        "json.objectWrap"
+      ]
+    },
+    {
+      "title": "YAML",
+      "properties": [
+        "yaml.enabled",
+        "yaml.wrap"
+      ]
+    },
+    {
+      "title": "TOML",
+      "properties": [
+        "toml.enabled",
+        "toml.alignEntries",
+        "toml.alignComments",
+        "toml.alignSingleComments",
+        "toml.arrayAutoExpand",
+        "toml.arrayAutoCollapse",
+        "toml.inlineTableExpand",
+        "toml.compactArrays",
+        "toml.compactInlineTables",
+        "toml.compactEntries",
+        "toml.indentTables",
+        "toml.indentEntries",
+        "toml.trailingNewline",
+        "toml.reorderKeys",
+        "toml.reorderArrays",
+        "toml.reorderInlineTables",
+        "toml.allowedBlankLines"
+      ]
+    },
+    {
+      "title": "XML",
+      "properties": [
+        "xml.enabled",
+        "xml.selfClosingSpace",
+        "xml.sortAttributes",
+        "xml.attributeQuotes"
+      ]
+    },
+    {
+      "title": "Markdown",
+      "properties": [
+        "markdown.enabled",
+        "markdown.preset",
+        "markdown.wrap",
+        "markdown.bullet",
+        "markdown.emphasis",
+        "markdown.strong",
+        "markdown.numbering",
+        "markdown.rule",
+        "markdown.fence",
+        "markdown.heading"
+      ]
+    },
+    {
+      "title": "Dockerfiles",
+      "properties": [
+        "dockerfile.enabled",
+        "dockerfile.indentStages",
+        "dockerfile.healthcheckCmdNewLine"
+      ]
+    },
+    {
+      "title": "INI",
+      "properties": [
+        "ini.enabled",
+        "ini.spaceAroundEquals"
+      ]
+    },
+    {
+      "title": "GraphQL",
+      "properties": [
+        "graphql.enabled"
+      ]
+    },
+    {
+      "title": "JavaScript and TypeScript",
+      "properties": [
+        "js.enabled",
+        "js.semi",
+        "js.jsxSingleQuote",
+        "js.quoteProps",
+        "js.trailingComma",
+        "js.arrowParens",
+        "js.objectWrap",
+        "js.experimentalTernaries",
+        "js.experimentalOperatorPosition",
+        "js.jsdoc",
+        "js.preserveBreaks",
+        "js.sortImports",
+        "js.importOrder",
+        "js.importOrderParserPlugins",
+        "js.importOrderSeparation",
+        "js.importOrderSortSpecifiers",
+        "js.importOrderGroupNamespaceSpecifiers",
+        "js.importOrderCaseInsensitive",
+        "js.importOrderSideEffects",
+        "js.importOrderSortByLength",
+        "js.importOrderImportAttributesKeyword",
+        "js.importOrderExclude",
+        "js.importOrderTypeScriptVersion",
+        "js.importOrderCaseSensitive",
+        "js.importOrderSafeSideEffects",
+        "js.organizeImportsSkipDestructiveCodeActions",
+        "js.organizeImportsTypeOrder"
+      ]
+    }
+  ],
+  "x-playground": {
+    "extension": "html",
+    "input": [
+      "<!DOCTYPE html>",
+      "<html><head><title>tidy</title>",
+      "<style>body{font-family:sans-serif;margin:0} .card{padding:8px 16px;border:1px solid #ccc}</style>",
+      "</head>",
+      "<body><div class=\"card\"><h1>Hello</h1><p>tidy formats <em>HTML</em>, the <code>&lt;style&gt;</code> and the <code>&lt;script&gt;</code> in it.</p></div>",
+      "<script>const items=[1,2,3]; document.querySelector('.card').addEventListener('click',()=>{console.log(items.map(x=>x*2))})</script>",
+      "</body></html>"
+    ]
+  },
+  "properties": {
+    "width": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The line width the printer fits to. 120 for Dockerfiles. Defaults to the global `lineWidth` when it's set.",
+      "default": 80
+    },
+    "indent": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The width of one indent. Defaults to the global `indentWidth` when it's set.",
+      "default": 2
+    },
+    "tabs": {
+      "type": "boolean",
+      "description": "Indent with tabs. Defaults to the global `useTabs` when it's set.",
+      "default": false,
+      "x-example": {
+        "extension": "ts",
+        "input": [
+          "function add(a, b) {",
+          "return a + b;",
+          "}"
+        ]
+      }
+    },
+    "eol": {
+      "type": "string",
+      "enum": [
+        "lf",
+        "crlf",
+        "cr"
+      ],
+      "description": "The line ending to write. Defaults to the global `newLineKind` when it's set.",
+      "default": "lf"
+    },
+    "whitespace": {
+      "type": "string",
+      "enum": [
+        "strict",
+        "auto",
+        "ignore"
+      ],
+      "description": "Whitespace sensitivity in HTML, Vue, Handlebars and XML. `strict` for XML.",
+      "default": "auto"
+    },
+    "quote": {
+      "type": "string",
+      "enum": [
+        "double",
+        "single"
+      ],
+      "description": "Quotes in Handlebars, style sheets, JSON5, YAML and JS.",
+      "default": "double",
+      "x-example": {
+        "extension": "ts",
+        "input": [
+          "const greeting = \"hello\";"
+        ]
+      }
+    },
+    "trailingComma": {
+      "type": "boolean",
+      "description": "Trailing commas in SCSS, JSONC, JSON5, YAML flow collections, TOML arrays and JS.",
+      "default": true,
+      "x-example": {
+        "extension": "ts",
+        "config": {
+          "width": 20
+        },
+        "input": [
+          "const numbers = [first, second, third];"
+        ]
+      }
+    },
+    "bracketSpacing": {
+      "type": "boolean",
+      "description": "Spaces inside the braces of JSON and JS objects, and YAML flow mappings.",
+      "default": true,
+      "x-example": {
+        "extension": "ts",
+        "input": [
+          "const point = {x: 1, y: 2};"
+        ]
+      }
+    },
+    "bracketSameLine": {
+      "type": "boolean",
+      "description": "Keep the `>` of a multi-line tag on the last line.",
+      "default": false,
+      "x-example": {
+        "extension": "html",
+        "input": [
+          "<button class=\"primary-button\" type=\"submit\" disabled aria-label=\"Submit the form\">Submit</button>"
+        ]
+      }
+    },
+    "singleAttributePerLine": {
+      "type": "boolean",
+      "description": "Put each attribute on its own line.",
+      "default": false,
+      "x-example": {
+        "extension": "html",
+        "input": [
+          "<a href=\"/home\" class=\"link\">Home</a>"
+        ]
+      }
+    },
+    "ignore": {
+      "type": "string",
+      "description": "The name of the ignore directive. A comment with this name skips the next node. It can list the tools it applies to after the name, as `prettier-ignore format,lint`, and then applies only when `format` is one of them.",
+      "default": "prettier-ignore"
+    },
+    "embedded": {
+      "type": "boolean",
+      "description": "Format the code of other languages inside a file.",
+      "default": true
+    },
+    "html.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format HTML files."
+    },
+    "vue.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format Vue files."
+    },
+    "vue.indentBlocks": {
+      "type": "boolean",
+      "description": "Indent the contents of `<script>` and `<style>`.",
+      "default": false,
+      "x-example": {
+        "extension": "vue",
+        "input": [
+          "<script>",
+          "export default {}",
+          "</script>"
+        ]
+      }
+    },
+    "handlebars.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format Handlebars files."
+    },
+    "handlebars.dialect": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "handlebars",
+        "tempura"
+      ],
+      "description": "Which mustache grammar to parse.",
+      "default": "auto"
+    },
+    "css.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format CSS, SCSS and Less files."
+    },
+    "json.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format JSON files."
+    },
+    "json.quoteProps": {
+      "type": "string",
+      "enum": [
+        "as-needed",
+        "consistent",
+        "preserve"
+      ],
+      "description": "When to quote the keys of an object.",
+      "default": "as-needed"
+    },
+    "json.objectWrap": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "collapse"
+      ],
+      "description": "Keep an object expanded when the source had a line break after `{`.",
+      "default": "preserve"
+    },
+    "yaml.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format YAML files."
+    },
+    "yaml.wrap": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "always",
+        "never"
+      ],
+      "description": "How to wrap prose.",
+      "default": "preserve",
+      "x-example": {
+        "extension": "yaml",
+        "config": {
+          "width": 40
+        },
+        "input": [
+          "text: this is a long line of plain text that goes past the line width"
+        ]
+      }
+    },
+    "toml.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format TOML files."
+    },
+    "toml.alignEntries": {
+      "type": "boolean",
+      "description": "Align the values of consecutive entries.",
+      "default": false,
+      "x-example": {
+        "extension": "toml",
+        "input": [
+          "name = \"tidy\"",
+          "version = \"2.1.0\""
+        ]
+      }
+    },
+    "toml.alignComments": {
+      "type": "boolean",
+      "description": "Align the comments after consecutive entries.",
+      "default": true
+    },
+    "toml.alignSingleComments": {
+      "type": "boolean",
+      "description": "Align a comment that stands alone.",
+      "default": true
+    },
+    "toml.arrayAutoExpand": {
+      "type": "boolean",
+      "description": "Expand an array that does not fit the line width.",
+      "default": true
+    },
+    "toml.arrayAutoCollapse": {
+      "type": "boolean",
+      "description": "Collapse an array that fits the line width.",
+      "default": true
+    },
+    "toml.inlineTableExpand": {
+      "type": "boolean",
+      "description": "Expand an inline table onto several lines.",
+      "default": true
+    },
+    "toml.compactArrays": {
+      "type": "boolean",
+      "description": "No spaces inside the brackets of an array.",
+      "default": true
+    },
+    "toml.compactInlineTables": {
+      "type": "boolean",
+      "description": "No spaces inside the braces of an inline table.",
+      "default": false
+    },
+    "toml.compactEntries": {
+      "type": "boolean",
+      "description": "No spaces around the `=` of an entry.",
+      "default": false
+    },
+    "toml.indentTables": {
+      "type": "boolean",
+      "description": "Indent the entries of a table.",
+      "default": false
+    },
+    "toml.indentEntries": {
+      "type": "boolean",
+      "description": "Indent entries under their table header.",
+      "default": false
+    },
+    "toml.trailingNewline": {
+      "type": "boolean",
+      "description": "End the file with a line break.",
+      "default": true
+    },
+    "toml.reorderKeys": {
+      "type": "boolean",
+      "description": "Sort the keys of each table.",
+      "default": false
+    },
+    "toml.reorderArrays": {
+      "type": "boolean",
+      "description": "Sort the values of each array.",
+      "default": false
+    },
+    "toml.reorderInlineTables": {
+      "type": "boolean",
+      "description": "Sort the keys of each inline table.",
+      "default": false
+    },
+    "toml.allowedBlankLines": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "How many blank lines to keep in a row.",
+      "default": 2
+    },
+    "xml.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format XML files."
+    },
+    "xml.selfClosingSpace": {
+      "type": "boolean",
+      "description": "A space before the `/>` of a self-closing tag.",
+      "default": true
+    },
+    "xml.sortAttributes": {
+      "type": "boolean",
+      "description": "Sort attributes by name.",
+      "default": false,
+      "x-example": {
+        "extension": "xml",
+        "input": [
+          "<item name=\"b\" id=\"a\"/>"
+        ]
+      }
+    },
+    "xml.attributeQuotes": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "single",
+        "double"
+      ],
+      "description": "Which quotes to write around an attribute value.",
+      "default": "preserve"
+    },
+    "markdown.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format Markdown files."
+    },
+    "markdown.preset": {
+      "type": "string",
+      "enum": [
+        "prettier",
+        "preserve"
+      ],
+      "description": "A starting set of the marker options below.",
+      "default": "prettier"
+    },
+    "markdown.wrap": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "always",
+        "never"
+      ],
+      "description": "How to wrap prose.",
+      "default": "preserve"
+    },
+    "markdown.bullet": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "dash",
+        "asterisk",
+        "plus"
+      ],
+      "description": "The marker of a bullet list item.",
+      "default": "dash",
+      "x-example": {
+        "extension": "md",
+        "input": [
+          "* one",
+          "* two"
+        ]
+      }
+    },
+    "markdown.emphasis": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "underscore",
+        "asterisk"
+      ],
+      "description": "The delimiter of emphasis.",
+      "default": "underscore",
+      "x-example": {
+        "extension": "md",
+        "input": [
+          "Some *emphasized* text."
+        ]
+      }
+    },
+    "markdown.strong": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "asterisk",
+        "underscore"
+      ],
+      "description": "The delimiter of strong emphasis.",
+      "default": "asterisk"
+    },
+    "markdown.numbering": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "auto"
+      ],
+      "description": "The numbers of ordered list items.",
+      "default": "auto"
+    },
+    "markdown.rule": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "dash",
+        "asterisk",
+        "underscore"
+      ],
+      "description": "The characters of a thematic break.",
+      "default": "dash"
+    },
+    "markdown.fence": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "backtick",
+        "tilde"
+      ],
+      "description": "The fence of a code block.",
+      "default": "backtick"
+    },
+    "markdown.heading": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "atx"
+      ],
+      "description": "Turn setext headings into `#` prefixes.",
+      "default": "keep"
+    },
+    "dockerfile.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format Dockerfiles files."
+    },
+    "dockerfile.indentStages": {
+      "type": "boolean",
+      "description": "Indent the instructions of each stage.",
+      "default": false,
+      "x-example": {
+        "extension": "dockerfile",
+        "input": [
+          "FROM alpine",
+          "RUN echo hello"
+        ]
+      }
+    },
+    "dockerfile.healthcheckCmdNewLine": {
+      "type": "boolean",
+      "description": "Put a HEALTHCHECK's CMD on its own line.",
+      "default": false
+    },
+    "ini.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format INI files."
+    },
+    "ini.spaceAroundEquals": {
+      "type": "boolean",
+      "description": "Spaces around the `=` of an entry.",
+      "default": true,
+      "x-example": {
+        "extension": "ini",
+        "input": [
+          "[core]",
+          "editor=vim"
+        ]
+      }
+    },
+    "graphql.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format GraphQL files."
+    },
+    "js.enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to format JavaScript and TypeScript files."
+    },
+    "js.semi": {
+      "type": "boolean",
+      "description": "End statements with a semicolon.",
+      "default": true,
+      "x-example": {
+        "extension": "ts",
+        "input": [
+          "const value = 1;",
+          "console.log(value);"
+        ]
+      }
+    },
+    "js.jsxSingleQuote": {
+      "type": "boolean",
+      "description": "Single quotes in JSX attributes.",
+      "default": false
+    },
+    "js.quoteProps": {
+      "type": "string",
+      "enum": [
+        "as-needed",
+        "consistent",
+        "preserve"
+      ],
+      "description": "When to quote the keys of an object.",
+      "default": "as-needed",
+      "x-example": {
+        "extension": "ts",
+        "input": [
+          "const headers = { \"accept\": \"text/html\", \"content-type\": \"text/plain\" };"
+        ]
+      }
+    },
+    "js.trailingComma": {
+      "anyOf": [
+        {
+          "enum": [
+            "all",
+            "es5",
+            "none"
+          ]
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "description": "Where to leave a trailing comma.",
+      "default": "all"
+    },
+    "js.arrowParens": {
+      "type": "string",
+      "enum": [
+        "always",
+        "avoid"
+      ],
+      "description": "Parentheses around a lone arrow function parameter.",
+      "default": "always",
+      "x-example": {
+        "extension": "ts",
+        "input": [
+          "const double = x => x * 2;"
+        ]
+      }
+    },
+    "js.objectWrap": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "collapse"
+      ],
+      "description": "Keep an object expanded when the source had a line break after `{`.",
+      "default": "preserve"
+    },
+    "js.experimentalTernaries": {
+      "type": "boolean",
+      "description": "Prettier's experimental ternary layout.",
+      "default": false
+    },
+    "js.experimentalOperatorPosition": {
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ],
+      "description": "Which side of a line break a binary operator sits on.",
+      "default": "end"
+    },
+    "js.jsdoc": {
+      "type": "boolean",
+      "description": "Format JSDoc comments, as `prettier-plugin-jsdoc` does.",
+      "default": true
+    },
+    "js.preserveBreaks": {
+      "type": "boolean",
+      "description": "Keep argument lists, parameter lists, arrays and union types broken where the source breaks them.",
+      "default": false
+    },
+    "js.sortImports": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "trivago",
+            "ianvs",
+            "organize-imports"
+          ]
+        },
+        {
+          "type": "object",
+          "title": "SortImports",
+          "description": "Sort as `true` does, with these options.",
+          "properties": {
+            "groups": {
+              "type": "array",
+              "description": "The groups, in order: predefined ones, such as `builtin`, `external`, `internal`, `parent`, `sibling`, `index`, `style` and `unknown`, or the names of `customGroups`. An array sorts its groups as one. A `newlinesBetween` object between two groups overrides `newlinesBetween` there.",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "newlinesBetween": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "default": [
+                "builtin",
+                "external",
+                [
+                  "internal",
+                  "subpath"
+                ],
+                [
+                  "parent",
+                  "sibling",
+                  "index"
+                ],
+                "style",
+                "unknown"
+              ]
+            },
+            "customGroups": {
+              "type": "array",
+              "description": "Groups of your own, which `groups` can name. An import goes to the first group it matches, before the predefined ones.",
+              "items": {
+                "type": "object",
+                "title": "CustomGroup",
+                "description": "A group of your own.",
+                "properties": {
+                  "groupName": {
+                    "type": "string",
+                    "description": "The name that `groups` gives the group."
+                  },
+                  "elementNamePattern": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Globs that the module name must match."
+                  },
+                  "selector": {
+                    "enum": [
+                      "type",
+                      "side_effect_style",
+                      "side_effect",
+                      "style",
+                      "index",
+                      "sibling",
+                      "parent",
+                      "subpath",
+                      "internal",
+                      "builtin",
+                      "external",
+                      "import"
+                    ],
+                    "description": "The kind of import."
+                  },
+                  "modifiers": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "side_effect",
+                        "type",
+                        "value",
+                        "default",
+                        "wildcard",
+                        "named"
+                      ]
+                    },
+                    "description": "Properties that the import must all have."
+                  }
+                },
+                "additionalProperties": false
+              },
+              "default": []
+            },
+            "order": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "description": "Sort up or down.",
+              "default": "asc"
+            },
+            "ignoreCase": {
+              "type": "boolean",
+              "description": "Ignore case when sorting.",
+              "default": true
+            },
+            "newlinesBetween": {
+              "type": "boolean",
+              "description": "A blank line between groups.",
+              "default": true
+            },
+            "internalPattern": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The prefixes of internal modules.",
+              "default": [
+                "~/",
+                "@/",
+                "#"
+              ]
+            },
+            "sortSideEffects": {
+              "type": "boolean",
+              "description": "Sort side-effect imports too. Otherwise, no import moves across one.",
+              "default": false
+            },
+            "partitionByNewline": {
+              "type": "boolean",
+              "description": "Sort the imports between blank lines apart.",
+              "default": false
+            },
+            "partitionByComment": {
+              "type": "boolean",
+              "description": "Sort the imports between comments apart.",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "Sort imports: `true` as `bun fmt` does, or as `\"trivago\"` (`@trivago/prettier-plugin-sort-imports`), `\"ianvs\"` (`@ianvs/prettier-plugin-sort-imports`) or `\"organize-imports\"` (`prettier-plugin-organize-imports`) does. `true` never moves an import across a side-effect import.",
+      "default": false
+    },
+    "js.importOrder": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The order of the groups of imports, as regular expressions of module names. `<THIRD_PARTY_MODULES>` is the modules that match none. With `\"ianvs\"`, `<BUILTIN_MODULES>` is Node's modules, `<TYPES>` marks type imports, and `\"\"` puts a blank line between two groups. Only with `js.sortImports` set to `\"trivago\"` or `\"ianvs\"`."
+    },
+    "js.importOrderParserPlugins": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The Babel plugins of the original plugin. With `\"ianvs\"`, type and value imports of a module combine only if it holds `typescript`. Only with `js.sortImports` set to `\"trivago\"` or `\"ianvs\"`. Defaults to `[\"typescript\", \"jsx\"]`."
+    },
+    "js.importOrderSeparation": {
+      "type": "boolean",
+      "description": "A blank line between the groups of `importOrder`. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `false`."
+    },
+    "js.importOrderSortSpecifiers": {
+      "type": "boolean",
+      "description": "Sort the names inside braces. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `false`."
+    },
+    "js.importOrderGroupNamespaceSpecifiers": {
+      "type": "boolean",
+      "description": "Put namespace imports first in their group. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `false`."
+    },
+    "js.importOrderCaseInsensitive": {
+      "type": "boolean",
+      "description": "Ignore case when sorting. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `false`."
+    },
+    "js.importOrderSideEffects": {
+      "type": "boolean",
+      "description": "Sort side-effect imports too. Otherwise, no import moves across one. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `true`."
+    },
+    "js.importOrderSortByLength": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "description": "Sort by the length of the import, not by name. Only with `js.sortImports` set to `\"trivago\"`."
+    },
+    "js.importOrderImportAttributesKeyword": {
+      "type": "string",
+      "enum": [
+        "with",
+        "assert",
+        "with-legacy"
+      ],
+      "description": "The keyword of import attributes. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `\"with\"`."
+    },
+    "js.importOrderExclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Files whose imports stay as they are, as globs. Only with `js.sortImports` set to `\"trivago\"`. Defaults to `[]`."
+    },
+    "js.importOrderTypeScriptVersion": {
+      "type": "string",
+      "description": "The project's TypeScript version. Type and value imports of a module combine from 4.5.0. Only with `js.sortImports` set to `\"ianvs\"`. Defaults to `\"1.0.0\"`."
+    },
+    "js.importOrderCaseSensitive": {
+      "type": "boolean",
+      "description": "Sort with case sensitivity. Only with `js.sortImports` set to `\"ianvs\"`. Defaults to `false`."
+    },
+    "js.importOrderSafeSideEffects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Side-effect imports that may move, as regular expressions of module names. Only with `js.sortImports` set to `\"ianvs\"`. Defaults to `[]`."
+    },
+    "js.organizeImportsSkipDestructiveCodeActions": {
+      "type": "boolean",
+      "description": "Keep the imports that are not used. Only with `js.sortImports` set to `\"organize-imports\"`. Defaults to `false`."
+    },
+    "js.organizeImportsTypeOrder": {
+      "type": "string",
+      "enum": [
+        "last",
+        "inline",
+        "first"
+      ],
+      "description": "Where type imports go among the names inside braces. Default: as TypeScript does. Only with `js.sortImports` set to `\"organize-imports\"`."
+    }
+  }
+}

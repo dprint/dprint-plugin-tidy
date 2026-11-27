@@ -1,0 +1,15 @@
+-- file.css --
+== should format css ==
+a{color:red;background:BLUE}
+@media (max-width:100px){.b{margin:0 0 0 0}}
+
+[expect]
+a {
+  color: red;
+  background: BLUE;
+}
+@media (max-width: 100px) {
+  .b {
+    margin: 0 0 0 0;
+  }
+}

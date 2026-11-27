@@ -1,0 +1,12 @@
+-- file.jsonc --
+== should format jsonc with comments ==
+{
+// a comment
+"a":1,"b":[1,2,3]}
+
+[expect]
+{
+  // a comment
+  "a": 1,
+  "b": [1, 2, 3],
+}

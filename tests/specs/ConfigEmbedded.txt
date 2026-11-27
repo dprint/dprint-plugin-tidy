@@ -1,0 +1,9 @@
+-- file.html --
+~~ {"embedded": false} ~~
+== should leave embedded code as written ==
+<script>let a=1</script>
+
+[expect]
+<script>
+  let a=1
+</script>

@@ -1,0 +1,7 @@
+-- file.ts --
+~~ {"js": {"semi": false}} ~~
+== should apply the options of a section written as an object ==
+const a = 1;
+
+[expect]
+const a = 1

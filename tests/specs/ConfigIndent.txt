@@ -1,0 +1,9 @@
+-- file.ts --
+~~ {"indent": 4} ~~
+== should indent with the width ==
+function f() { return 1 }
+
+[expect]
+function f() {
+    return 1;
+}

@@ -1,0 +1,13 @@
+-- file.ts --
+~~ {"ignore": "dprint-ignore"} ~~
+== should use the configured ignore directive ==
+// dprint-ignore
+const a = [1,2,3];
+// prettier-ignore
+const b = [1,2,3];
+
+[expect]
+// dprint-ignore
+const a = [1,2,3];
+// prettier-ignore
+const b = [1, 2, 3];

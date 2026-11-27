@@ -1,0 +1,12 @@
+-- file.mjml --
+== should format mjml ==
+<mjml><mj-body><mj-section><mj-column><mj-text>Hello</mj-text></mj-column></mj-section></mj-body></mjml>
+
+[expect]
+<mjml
+  ><mj-body
+    ><mj-section
+      ><mj-column><mj-text>Hello</mj-text></mj-column></mj-section
+    ></mj-body
+  ></mjml
+>

@@ -1,0 +1,6 @@
+-- file.hbs --
+== should format a handlebars template ==
+<ul>{{#each items as |item|}}<li class='item'>{{item.name}}</li>{{/each}}</ul>
+
+[expect]
+<ul>{{#each items as |item|}}<li class="item">{{item.name}}</li>{{/each}}</ul>

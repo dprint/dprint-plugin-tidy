@@ -1,0 +1,12 @@
+-- package.json --
+== should format package.json like JSON.stringify ==
+{"name":"a","files":["a","b"]}
+
+[expect]
+{
+  "name": "a",
+  "files": [
+    "a",
+    "b"
+  ]
+}

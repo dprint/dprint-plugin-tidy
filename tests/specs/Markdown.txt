@@ -1,0 +1,30 @@
+-- file.md --
+!! should format markdown and its code blocks !!
+Title
+=====
+
+* one
+* two
+
+```ts
+let a={b:1}
+```
+
+```rust
+fn  main(){}
+```
+
+[expect]
+Title
+=====
+
+- one
+- two
+
+```ts
+let a = { b: 1 };
+```
+
+```rust
+fn  main(){}
+```

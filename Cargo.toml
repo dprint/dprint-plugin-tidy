@@ -1,0 +1,34 @@
+[package]
+name = "dprint-plugin-tidy"
+version = "0.0.1"
+authors = ["David Sherret <dsherret@gmail.com>"]
+edition = "2024"
+homepage = "https://github.com/dprint/dprint-plugin-tidy"
+keywords = ["formatting", "formatter", "tidy", "prettier", "html"]
+license = "MIT"
+repository = "https://github.com/dprint/dprint-plugin-tidy"
+description = "HTML, Vue, Handlebars, CSS, JSON, YAML, TOML, XML, GraphQL, INI, Dockerfile, Markdown, JavaScript and TypeScript formatter for dprint via tidy."
+
+[lib]
+crate-type = ["lib", "cdylib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+debug-assertions = false
+overflow-checks = false
+panic = "abort"
+
+[features]
+wasm = ["dprint-core/wasm"]
+
+[dependencies]
+dprint-core = { version = "0.75.2", default-features = false }
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = { version = "1.0" }
+thiserror = "2"
+tidy = { version = "2.1.0", features = ["config"] }
+
+[dev-dependencies]
+dprint-development = "0.12.1"

@@ -1,0 +1,14 @@
+-- file.yaml --
+== should format yaml ==
+a:   1
+b:
+    - c
+    -   d
+e: {f: 1,   g: 2}
+
+[expect]
+a: 1
+b:
+  - c
+  - d
+e: { f: 1, g: 2 }

@@ -1,0 +1,7 @@
+-- file.ts --
+~~ {"quote": "single"} ~~
+== should use single quotes ==
+const a = "b";
+
+[expect]
+const a = 'b';

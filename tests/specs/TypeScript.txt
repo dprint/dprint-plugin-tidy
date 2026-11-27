@@ -1,0 +1,13 @@
+-- file.ts --
+== should format typescript ==
+interface A{b:string;c?:number}
+const f=(a:A):string=>{return a.b}
+
+[expect]
+interface A {
+  b: string;
+  c?: number;
+}
+const f = (a: A): string => {
+  return a.b;
+};

@@ -1,0 +1,6 @@
+-- file.json5 --
+== should format json5 ==
+{a:1,'b':[1,2,3,],}
+
+[expect]
+{ a: 1, b: [1, 2, 3] }

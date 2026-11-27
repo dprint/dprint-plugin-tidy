@@ -1,0 +1,10 @@
+-- Dockerfile --
+== should format a dockerfile ==
+FROM   alpine
+RUN echo hello &&    echo world
+COPY  . /app
+
+[expect]
+FROM alpine
+RUN echo hello && echo world
+COPY . /app

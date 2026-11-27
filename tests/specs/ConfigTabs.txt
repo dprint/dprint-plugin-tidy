@@ -1,0 +1,9 @@
+-- file.css --
+~~ {"tabs": true} ~~
+== should indent with tabs ==
+a{color:red}
+
+[expect]
+a {
+	color: red;
+}

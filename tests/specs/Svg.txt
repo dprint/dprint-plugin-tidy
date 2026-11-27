@@ -1,0 +1,6 @@
+-- file.svg --
+== should format svg as xml ==
+<svg xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1"/></svg>
+
+[expect]
+<svg xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" /></svg>

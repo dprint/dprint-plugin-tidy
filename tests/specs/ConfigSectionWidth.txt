@@ -1,0 +1,9 @@
+-- file.md --
+~~ {"width": 120, "markdown.width": 20, "markdown.wrap": "always"} ~~
+!! should use the section's width !!
+This is a paragraph that is longer than twenty characters.
+
+[expect]
+This is a paragraph
+that is longer than
+twenty characters.

@@ -1,0 +1,22 @@
+-- file.html --
+== should format html with its script and style ==
+<div><p>Hello <b>world</b></p><script>let a=1</script><style>a{color:red}</style></div>
+
+[expect]
+<div>
+  <p>Hello <b>world</b></p>
+  <script>
+    let a = 1;
+  </script>
+  <style>
+    a {
+      color: red;
+    }
+  </style>
+</div>
+
+== should keep inline elements on one line when they fit ==
+<p>Some <em>emphasized</em>   and <a href="#">linked</a> text.</p>
+
+[expect]
+<p>Some <em>emphasized</em> and <a href="#">linked</a> text.</p>

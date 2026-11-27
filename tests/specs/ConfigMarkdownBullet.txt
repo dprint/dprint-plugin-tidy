@@ -1,0 +1,9 @@
+-- file.md --
+~~ {"markdown.bullet": "asterisk"} ~~
+!! should use the configured bullet !!
+- one
+- two
+
+[expect]
+* one
+* two

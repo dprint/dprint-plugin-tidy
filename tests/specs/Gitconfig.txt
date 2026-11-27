@@ -1,0 +1,12 @@
+-- .gitconfig --
+== should format a gitconfig ==
+[user]
+name=Someone
+[core]
+  editor=vim
+
+[expect]
+[user]
+name = Someone
+[core]
+  editor = vim
