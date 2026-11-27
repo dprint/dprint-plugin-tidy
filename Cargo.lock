@@ -156,9 +156,9 @@ dependencies = [
 
 [[package]]
 name = "dprint-core"
-version = "0.75.2"
+version = "0.78.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41d1b3e059b1b7519ef780acfa054650c095c7a6550e48f5da3a6f3ade945f6b"
+checksum = "ec9cb0adca1fc0d7e0184ddf4513bdfa5c672c82fcb9c89d0303b8010b5bba9c"
 dependencies = [
  "indexmap",
  "serde",

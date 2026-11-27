@@ -55,7 +55,10 @@ impl SyncPluginHandler<Configuration> for TidyPluginHandler {
         version
       ),
       update_url: Some("https://plugins.dprint.dev/dprint/dprint-plugin-tidy/latest.json".to_string()),
-      supports_range_formatting: Some(false),
+      supports_range_formatting: false,
+      // tidy's output sometimes changes when it's formatted again (ex. `<!DOCTYPE HTML>`
+      // or `a{--x: !important}`), and sometimes no longer parses, so dprint has to check it
+      skip_stable_format: false,
     }
   }
 
